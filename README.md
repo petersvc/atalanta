@@ -23,12 +23,12 @@ A estrutura do projeto segue os padrões do Spring Boot:
 - **repository**: Repositórios JPA para acesso aos dados.
 - **service**: Lógica de negócio e manipulação dos dados.
 - **controller**: Controladores REST para exposição da API.
-- **exceptions**: Exceções personalizadas.
-- **infra**: Configuração da aplicação.
-- **test**: Testes automatizados.
+- **exceptions**: Exceções personalizadas. (implementando) 
+- **infra**: Configuração da aplicação. (implementando)
+- **test**: Testes automatizados. (implementando)
 
-## Utilizando a API via browser
-**É possível utilizar a api, via swagger-ui, acessível em: **[API](https://desafio-rpe.onrender.com/swagger-ui/index.html)**.**
+## Utilizando a API via browser (implementando)
+**É possível utilizar a api, via swagger-ui, acessível em: **[API](https://atalanta.onrender.com/swagger-ui/index.html)**.**
 Verifique a seção `Como usar a API` para mais informações.
 
 ## Configuração do Ambiente de Execução
@@ -51,16 +51,16 @@ Para executar a aplicação sem Docker, siga os passos abaixo:
     - Java 21.
     - Maven 3.8+.
     - PostgreSQL 12+:
-      - Crie um banco de dados chamado `atalanta`.
+      - Crie um banco de dados com o nome `atalanta`.
 2. Clone o repositório para sua máquina local.
 3. Navegue até o diretório raiz do projeto.
 4. Para executar a aplicação, você pode escolher entre as seguintes opções:
-    - Em modo de desenvolvimento:
+   - A - Em modo de desenvolvimento:
         - Execute em um terminal o seguinte comando:
-          - `DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run`
-    - Executando uma build já compilada:
-        - Para compilar o projeto execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn clean package -DskipTests`.
-        - Para iniciar a aplicação execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres java -jar ./target/*.jar`.
+          - `DATABASE_URL=jdbc:postgresql://localhost:5432/atalanta DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run`
+   - B - Executando uma build já compilada:
+        - Para compilar o projeto execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/atalanta DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn clean package -DskipTests`.
+        - Para iniciar a aplicação execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/atalanta DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres java -jar ./target/*.jar`.
 5. Acesse a documentação da API em `http://localhost:8080/swagger-ui/index.html`.
 
 Alternativamente, caso não deseje utilizar variáveis de ambiente,
@@ -78,7 +78,7 @@ executar o comando `mvn clean package -DskipTests`, executar `java -jar ./target
 É possível utilizar a API através do swagger ou de um cliente REST como o Postman ou Insomnia.
 
 Os endpoints disponíveis estão listados na documentação da API, acessível em `http://localhost:54321/swagger-ui/index.html`, `http://localhost:8080/swagger-ui/index.html` ou ainda
-`https://desafio-rpe.onrender.com/swagger-ui/index.html`.
+`https://atalanta.onrender.com/swagger-ui/index.html`.
 
 É possível observar os detalhes de cada endpoint, como os parâmetros necessários através do swagger-ui.
 
