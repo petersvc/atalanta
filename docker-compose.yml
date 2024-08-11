@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:13.14-alpine3.19
+    container_name: postgres-atalanta
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: atalanta
+    ports:
+      - "54322:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  app:
+    image: maven:3.9-eclipse-temurin-21-alpine-atalanta
+    container_name: springboot-atalanta
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres-atalanta:5432/atalanta
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "54321:8080"
+    depends_on:
+      - db
