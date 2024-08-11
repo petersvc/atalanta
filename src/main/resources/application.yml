@@ -1,0 +1,22 @@
+server:
+    port: 5000
+
+spring:
+    application:
+        name: atalanta
+
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: update
+        generate-ddl: true
+        properties:
+            hibernate:
+                format_sql: true
+
+    datasource:
+        password: ${DATABASE_PASSWORD}
+        url: ${DATABASE_URL}
+        username: ${DATABASE_USERNAME}
+
+    #DATABASE_URL=jdbc:postgresql://localhost:5432/atalanta DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run
