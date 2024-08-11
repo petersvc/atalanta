@@ -56,10 +56,8 @@ Para executar a aplicação sem Docker, siga os passos abaixo:
 3. Navegue até o diretório raiz do projeto.
 4. Para executar a aplicação, você pode escolher entre as seguintes opções:
     - Em modo de desenvolvimento:
-        - Comando:`DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run`
-        - `DATABASE_URL`: URL de conexão com o banco de dados.
-        - `DATABASE_USERNAME`: Usuário do banco de dados.
-        - `DATABASE_PASSWORD`: Senha do banco de dados
+        - Execute em um terminal o seguinte comando:
+          - `DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run`
     - Executando uma build já compilada:
         - Para compilar o projeto execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn clean package -DskipTests`.
         - Para iniciar a aplicação execute:`DATABASE_URL=jdbc:postgresql://localhost:5432/rpe DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres java -jar ./target/*.jar`.
