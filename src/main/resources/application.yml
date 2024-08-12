@@ -16,7 +16,7 @@ spring:
 
     datasource:
         password: ${DATABASE_PASSWORD}
-        url: ${DATABASE_URL}
+        url: ${DATABASE_URL};
         username: ${DATABASE_USERNAME}
 
 #DATABASE_URL=jdbc:postgresql://localhost:5432/atalanta DATABASE_USERNAME=postgres DATABASE_PASSWORD=postgres mvn spring-boot:run
