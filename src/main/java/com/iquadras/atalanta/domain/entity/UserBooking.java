@@ -1,61 +1,38 @@
 package com.iquadras.atalanta.domain.entity;
 
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "T_USER_BOOKING")
 public class UserBooking {
-    private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userBookingId;
+
     private LocalDateTime startTime;
     private int durationHours;
+
+    @ManyToOne
+    @JoinColumn(name = "COURT_ID")
     private Court court;
+
+    @ManyToOne // Define o relacionamento Many-to-One com User
     private User user;
 
-    public UserBooking(Long id, LocalDateTime startTime, int durationHours, Court court, User user) {
-        this.id = id;
-        this.startTime = startTime;
-        this.durationHours = durationHours;
-        this.court = court;
-        this.user = user;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getDurationHours() {
-        return durationHours;
-    }
-
-    public void setDurationHours(int durationHours) {
-        this.durationHours = durationHours;
-    }
-
-    public Court getCourt() {
-        return this.court;
-    }
-
-    public void setCourt(Court newCourt) {
-        this.court = newCourt;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User newUser) {
-        this.user = newUser;
-    }
 }

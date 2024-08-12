@@ -1,75 +1,40 @@
 package com.iquadras.atalanta.domain.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.util.ArrayList;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "T_USER")
 public class User {
-    private Long userId;
-    private String userFullName;
-    private String userEmail;
-    private String userPhoneNumber;
-    private String userPassword;
-    private ArrayList<UserBooking> userBookingList;
 
-    public User( Long userId, String userFullName, String userEmail, String userPhone, String userPassword){
-        this.userId = userId;
-        this.userFullName = userFullName;
-        this.userEmail = userEmail;
-        this.userPhoneNumber = userPhone;
-        this.userPassword = userPassword;
-        this.userBookingList = new ArrayList<UserBooking>();
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long userId;
 
-    // Getters and Setters
-    public Long getUserId() {
-        return userId;
-    }
+  private String userFullName;
+  private String userEmail;
+  private String userPhoneNumber;
+  private String userPassword;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  @OneToMany(mappedBy = "user")
+  private List<UserBooking> userBookingList = new ArrayList<>();
 
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserFullName() {
-        return userFullName;
-    }
-
-    public void setUserFullName(String userFullName) {
-        this.userFullName = userFullName;
-    }
-
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
-    }
-
-    public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userPhoneNumber = userPhoneNumber;
-    }
-
-    
-    public String getUserPassword() {
-        return userPassword;
-    }
-    
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public ArrayList<UserBooking> getUserBookingList() {
-        return userBookingList;
-    }
-    
-    public void setUserBookingList(ArrayList<UserBooking> userBookingList) {
-        this.userBookingList = userBookingList;
-    }
-
-    public void addBooking(UserBooking userNewBooking) {
+  public void addBooking(UserBooking userNewBooking) {
         this.userBookingList.add(userNewBooking);
     }
     

@@ -3,46 +3,30 @@ package com.iquadras.atalanta.domain.entity;
 import com.iquadras.atalanta.util.Sports;
 import com.iquadras.atalanta.util.CourtType;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "T_COURT")
 public class Court {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long courtId;
     private String courtName;
     private ArrayList<Sports> courtSports;
     private CourtType courtType;
-
-    // Getters and Setters
-    public Long getCourtId() {
-        return courtId;
-    }
-
-    public void setCourtId(Long courtId) {
-        this.courtId = courtId;
-    }
-
-    public String getCourtName() {
-        return courtName;
-    }
-
-    public void setCourtName(String courtName) {
-        this.courtName = courtName;
-    }
-
-    public ArrayList<Sports> getCourtSports() {
-        return courtSports;
-    }
-
-    public void setCourtSports(ArrayList<Sports> courtSports) {
-        this.courtSports = courtSports;
-    }
-
-    public CourtType getCourtType() {
-        return courtType;
-    }
-
-    public void setCourtType(CourtType courtType) {
-        this.courtType = courtType;
-    }
-    
     
 }
