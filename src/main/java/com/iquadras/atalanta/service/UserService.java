@@ -1,9 +1,12 @@
 package com.iquadras.atalanta.service;
 
 import com.iquadras.atalanta.domain.dto.DtoUser;
+import com.iquadras.atalanta.domain.dto.DtoUserLogin;
 import com.iquadras.atalanta.domain.entity.User;
 import com.iquadras.atalanta.repository.UserRepository;
+
 import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +33,21 @@ public class UserService {
     return userRepository.save(newUser);
 
   }
+
+  public User login(DtoUserLogin dtoUserLogin) {
+
+    Optional<User> user = userRepository.findByUserEmail(dtoUserLogin.userEmail());
+
+    if (!user.isPresent()) {
+      throw new RuntimeException("Nenhum usuário encontrado com esse email.");
+    }
+
+    if (!user.get().getUserPassword().equals(dtoUserLogin.userPassword())) {
+      throw new RuntimeException("Senha incorreta");
+    }
+
+    return user.get();
+
+  }
+
 }
