@@ -18,21 +18,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "T_USER_BOOKING")
-public class UserBooking {
+@Table(name = "T_BOOKING")
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userBookingId;
+    private Long id;
 
-    private LocalDateTime startTime;
-    private int durationHours;
+    @ManyToOne // Define o relacionamento Many-to-One com User
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "COURT_ID")
     private Court court;
 
-    @ManyToOne // Define o relacionamento Many-to-One com User
-    private User user;
+    private LocalDateTime startTime;
+    private int durationHours;
 
 }

@@ -23,18 +23,18 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long userId;
+  private Long id;
 
-  private String userFullName;
-  private String userEmail;
-  private String userPhoneNumber;
-  private String userPassword;
+  private String name;
+  private String email;
+  private String password;
+  private String phone;
 
   @OneToMany(mappedBy = "user")
-  private List<UserBooking> userBookingList = new ArrayList<>();
+  private List<Booking> bookingList = new ArrayList<>();
 
-  public void addBooking(UserBooking userNewBooking) {
-        this.userBookingList.add(userNewBooking);
+  public void addBooking(Booking newBooking) {
+        this.bookingList.add(newBooking);
     }
     
 }

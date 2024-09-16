@@ -1,7 +1,7 @@
 package com.iquadras.atalanta.service;
 
-import com.iquadras.atalanta.domain.dto.DtoUser;
-import com.iquadras.atalanta.domain.dto.DtoUserLogin;
+import com.iquadras.atalanta.domain.dto.user.DtoUser;
+import com.iquadras.atalanta.domain.dto.user.DtoUserLogin;
 import com.iquadras.atalanta.domain.entity.User;
 import com.iquadras.atalanta.repository.UserRepository;
 
@@ -21,7 +21,7 @@ public class UserService {
 
   public User createUser(DtoUser dtoUser) {
 
-    Optional<User> user = userRepository.findByUserEmail(dtoUser.userEmail());
+    Optional<User> user = userRepository.findByEmail(dtoUser.email());
 
     if (user.isPresent()) {
       throw new RuntimeException("Um usuário com este email já existe");
@@ -31,23 +31,34 @@ public class UserService {
     BeanUtils.copyProperties(dtoUser, newUser);
 
     return userRepository.save(newUser);
-
   }
 
   public User login(DtoUserLogin dtoUserLogin) {
 
-    Optional<User> user = userRepository.findByUserEmail(dtoUserLogin.userEmail());
+    Optional<User> user = userRepository.findByEmail(dtoUserLogin.email());
 
-    if (!user.isPresent()) {
+    if (user.isEmpty()) {
       throw new RuntimeException("Nenhum usuário encontrado com esse email.");
     }
 
-    if (!user.get().getUserPassword().equals(dtoUserLogin.userPassword())) {
+    if (!user.get().getPassword().equals(dtoUserLogin.password())) {
       throw new RuntimeException("Senha incorreta");
     }
 
     return user.get();
-
   }
 
+  public User getUser(Long id) {
+    return userRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+  }
+
+  public User updateUser(Long id, DtoUser dtoUser) {
+    var user = userRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+    BeanUtils.copyProperties(dtoUser, user);
+
+    return userRepository.save(user);
+  }
 }
