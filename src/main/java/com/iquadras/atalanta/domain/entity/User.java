@@ -29,6 +29,7 @@ public class User {
   private String email;
   private String password;
   private String phone;
+  private String imageUrl;
 
   @OneToMany(mappedBy = "user")
   private List<Booking> bookingList = new ArrayList<>();

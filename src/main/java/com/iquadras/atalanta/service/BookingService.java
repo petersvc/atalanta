@@ -22,7 +22,7 @@ public class BookingService {
   }
 
   public void createBooking(DtoBooking dtoBooking) {
-    var user = userService.getUser(dtoBooking.userId());
+    var user = dtoBooking.user();
 
     Booking newBooking = new Booking();
     BeanUtils.copyProperties(dtoBooking, newBooking);

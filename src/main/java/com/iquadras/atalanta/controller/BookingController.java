@@ -33,7 +33,7 @@ public class BookingController {
   @PostMapping
   public ResponseEntity<String> createBooking(@RequestBody @Valid DtoBooking dtoBooking) {
     bookingService.createBooking(dtoBooking);
-    return ResponseEntity.status(HttpStatus.CREATED).body("Quadra criada com sucesso");
+    return ResponseEntity.status(HttpStatus.CREATED).body("Reserva criada com sucesso");
   }
 
   @GetMapping
@@ -57,7 +57,7 @@ public class BookingController {
   @DeleteMapping("/{id}")
   public ResponseEntity<String> deleteBooking(@PathVariable Long id) {
     bookingService.deleteBooking(id);
-    return ResponseEntity.status(HttpStatus.OK).body("Quadra deletada com sucesso");
+    return ResponseEntity.status(HttpStatus.OK).body("Reserva deletada com sucesso");
   }
 
 }

@@ -41,7 +41,9 @@ public class UserController {
         user.getId(),
         user.getName(),
         user.getEmail(),
-        user.getPhone());
+        user.getPhone(),
+        user.getImageUrl()
+    );
 
     return ResponseEntity.status(HttpStatus.CREATED).body(dtoUserPostResponse);
   }
@@ -54,7 +56,9 @@ public class UserController {
         user.getId(),
         user.getName(),
         user.getEmail(),
-        user.getPhone());
+        user.getPhone(),
+        user.getImageUrl()
+    );
 
     return ResponseEntity.status(HttpStatus.OK).body(dtoUserPostResponse);
   }
@@ -67,7 +71,9 @@ public class UserController {
         user.getId(),
         user.getName(),
         user.getEmail(),
-        user.getPhone());
+        user.getPhone(),
+        user.getImageUrl()
+    );
 
     return ResponseEntity.status(HttpStatus.OK).body(dtoUserGetResponse);
   }
@@ -80,7 +86,9 @@ public class UserController {
         user.getId(),
         user.getName(),
         user.getEmail(),
-        user.getPhone());
+        user.getPhone(),
+        user.getImageUrl()
+    );
 
     return ResponseEntity.status(HttpStatus.OK).body(dtoUserGetResponse);
   }

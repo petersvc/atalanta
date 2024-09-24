@@ -35,6 +35,8 @@ public class Court {
     private String phone;
     private double price;
     private String description;
+    private String latitude;
+    private String longitude;
 
     @ElementCollection
     @CollectionTable(name = "court_sports", joinColumns = @JoinColumn(name = "court_id"))
@@ -46,4 +48,6 @@ public class Court {
 
     private int capacity;
     private double score;
+    private String imageUrl;
+    private String address;
 }

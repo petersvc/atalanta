@@ -21,7 +21,6 @@ public class CourtService {
   public void createCourt(DtoCourt dtoCourt) {
     Court newCourt = new Court();
     BeanUtils.copyProperties(dtoCourt, newCourt);
-
     courtRepository.save(newCourt);
   }
 
@@ -36,15 +35,12 @@ public class CourtService {
 
   public Court updateCourt(Long id, DtoCourt dtoCourt) {
     Court court = courtRepository.findById(id).orElseThrow(() -> new RuntimeException(NOT_FOUND));
-
     BeanUtils.copyProperties(dtoCourt, court);
-
     return courtRepository.save(court);
   }
 
   public void deleteCourt(Long id) {
     Court court = courtRepository.findById(id).orElseThrow(() -> new RuntimeException(NOT_FOUND));
-
     courtRepository.delete(court);
   }
 

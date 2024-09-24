@@ -4,5 +4,6 @@ public record DtoUserPostResponse(
     Long id,
     String name,
     String email,
-    String phone) {
+    String phone,
+    String imageUrl) {
 }
