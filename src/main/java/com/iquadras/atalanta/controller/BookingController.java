@@ -31,9 +31,16 @@ public class BookingController {
   }
 
   @PostMapping
-  public ResponseEntity<String> createBooking(@RequestBody @Valid DtoBooking dtoBooking) {
-    bookingService.createBooking(dtoBooking);
-    return ResponseEntity.status(HttpStatus.CREATED).body("Reserva criada com sucesso");
+  public ResponseEntity<Booking> createBooking(@RequestBody @Valid DtoBooking dtoBooking) {
+    System.out.println("id do usuario: " + dtoBooking.userId());
+    System.out.println("id da quadra: " + dtoBooking.courtId());
+    System.out.println("data: " + dtoBooking.date());
+    System.out.println("hora de inicio: " + dtoBooking.startTime());
+    System.out.println("duracao: " + dtoBooking.durationHours());
+
+    var booking = bookingService.createBooking(dtoBooking);
+    System.out.println("Reserva criada com sucesso2222");
+    return ResponseEntity.status(HttpStatus.CREATED).body(booking);
   }
 
   @GetMapping

@@ -30,12 +30,12 @@ public class User {
   private String password;
   private String phone;
   private String imageUrl;
-
-  @OneToMany(mappedBy = "user")
-  private List<Booking> bookingList = new ArrayList<>();
-
-  public void addBooking(Booking newBooking) {
-        this.bookingList.add(newBooking);
-    }
+//
+//  @OneToMany(mappedBy = "user")
+//  private List<Booking> bookingList = new ArrayList<>();
+//
+//  public void addBooking(Booking newBooking) {
+//        this.bookingList.add(newBooking);
+//    }
     
 }

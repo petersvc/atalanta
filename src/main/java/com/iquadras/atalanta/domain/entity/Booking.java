@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +33,8 @@ public class Booking {
     @JoinColumn(name = "COURT_ID")
     private Court court;
 
-    private LocalDateTime startTime;
+    private String date; // Atributo para armazenar o dia
+    private String startTime; // Atributo para armazenar a hora
     private int durationHours;
 
 }
