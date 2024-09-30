@@ -35,8 +35,8 @@ public class Court {
     private String phone;
     private double price;
     private String description;
-    private String latitude;
-    private String longitude;
+    private Double latitude;
+    private Double longitude;
 
     @ElementCollection
     @CollectionTable(name = "court_sports", joinColumns = @JoinColumn(name = "court_id"))

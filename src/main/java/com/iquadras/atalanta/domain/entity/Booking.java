@@ -8,7 +8,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,15 +25,15 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne // Define o relacionamento Many-to-One com User
+    @ManyToOne
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "COURT_ID")
     private Court court;
 
-    private String date; // Atributo para armazenar o dia
-    private String startTime; // Atributo para armazenar a hora
+    private LocalDate date;
+    private String startTime;
     private int durationHours;
 
 }

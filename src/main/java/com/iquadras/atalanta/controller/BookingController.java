@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -37,8 +38,8 @@ public class BookingController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Booking>> getAllBookings() {
-    var bookings = bookingService.getAllBookings();
+  public ResponseEntity<List<Booking>> getAllBookings(@RequestParam(required = false) Long userId) {
+    var bookings = bookingService.getAllBookings(userId);
     return ResponseEntity.status(HttpStatus.OK).body(bookings);
   }
 

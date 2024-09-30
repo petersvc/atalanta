@@ -1,7 +1,6 @@
 package com.iquadras.atalanta.service;
 
 import com.iquadras.atalanta.domain.dto.booking.DtoBooking;
-import com.iquadras.atalanta.domain.dto.user.DtoUser;
 import com.iquadras.atalanta.domain.entity.Booking;
 import com.iquadras.atalanta.repository.BookingRepository;
 import java.util.ArrayList;
@@ -33,11 +32,8 @@ public class BookingService {
     newBooking.setDate(dtoBooking.date());
     newBooking.setStartTime(dtoBooking.startTime());
     newBooking.setDurationHours(dtoBooking.durationHours());
-    return bookingRepository.save(newBooking);
 
-    // user.addBooking(newBooking);
-    // DtoUser dtoUser = new DtoUser(user.getName(), user.getEmail(), user.getPhone(), user.getPassword());
-    // userService.updateUser(user.getId(), dtoUser);
+    return bookingRepository.save(newBooking);
   }
 
   public Booking getBooking(Long id) {
@@ -45,7 +41,10 @@ public class BookingService {
         .orElseThrow(() -> new RuntimeException(NOT_FOUND));
   }
 
-  public List<Booking> getAllBookings() {
+  public List<Booking> getAllBookings(Long userId) {
+    if (userId != null) {
+      return bookingRepository.findByUserId(userId);
+    }
     return new ArrayList<>(bookingRepository.findAll());
   }
 
