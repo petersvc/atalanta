@@ -61,4 +61,11 @@ public class UserService {
 
     return userRepository.save(user);
   }
+
+  public void deleteUser(Long id) {
+    var user = userRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+    userRepository.delete(user);
+  }
 }
