@@ -56,9 +56,9 @@ public class BookingController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<String> deleteBooking(@PathVariable Long id) {
+  public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
     bookingService.deleteBooking(id);
-    return ResponseEntity.status(HttpStatus.OK).body("Reserva deletada com sucesso");
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
 }
