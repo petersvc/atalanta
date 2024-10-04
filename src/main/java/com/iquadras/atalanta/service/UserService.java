@@ -57,7 +57,9 @@ public class UserService {
     var user = userRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-    BeanUtils.copyProperties(dtoUser, user);
+    user.setName(dtoUser.name());
+    user.setEmail(dtoUser.email());
+    user.setPhone(dtoUser.phone());
 
     return userRepository.save(user);
   }
